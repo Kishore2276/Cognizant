@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, joinedload
-from models import Enrollment
+from DatabaseIntegration.HandsOn7.models import Enrollment
 
 engine = create_engine(
     "mysql+mysqlconnector://root:220706@localhost/college_db_orm",
