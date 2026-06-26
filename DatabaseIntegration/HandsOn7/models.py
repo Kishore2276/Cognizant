@@ -1,5 +1,6 @@
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, Date
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, Date, Boolean
 from sqlalchemy.orm import declarative_base, relationship
+from sqlalchemy import Time
 
 
 engine = create_engine(
@@ -30,8 +31,11 @@ class Student(Base):
 
     dept_id = Column(Integer, ForeignKey('departments.dept_id'))
 
+    is_active = Column(Boolean, default=True)
+
     department = relationship("Department", back_populates="students")
     enrollments = relationship("Enrollment", back_populates="student")
+    
 
 
 
@@ -80,3 +84,19 @@ class Enrollment(Base):
 Base.metadata.create_all(engine)
 
 print("All tables created successfully in college_db_orm")
+
+class CourseSchedule(Base):
+    __tablename__ = 'course_schedules'
+
+    schedule_id = Column(Integer, primary_key=True)
+
+    course_id = Column(
+        Integer,
+        ForeignKey('courses.course_id')
+    )
+
+    day_of_week = Column(String(20))
+    start_time = Column(Time)
+    end_time = Column(Time)
+
+    course = relationship("Course")
