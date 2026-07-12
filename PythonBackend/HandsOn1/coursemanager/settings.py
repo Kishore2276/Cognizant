@@ -1,3 +1,4 @@
+# Project settings including installed apps, middleware, templates and database configuration.
 """
 Django settings for coursemanager project.
 
@@ -31,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'courses',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

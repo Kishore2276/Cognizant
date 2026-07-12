@@ -1,3 +1,4 @@
+# ASGI entry point used for asynchronous applications and WebSockets.
 """
 ASGI config for coursemanager project.
 

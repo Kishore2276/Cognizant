@@ -1,3 +1,4 @@
+# WSGI entry point used to deploy the Django application.
 """
 WSGI config for coursemanager project.
 
