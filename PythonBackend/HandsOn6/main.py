@@ -14,9 +14,12 @@ async def root():
     return {"message": "API running"}
 
 @app.post("/api/courses/")
-async def create_course(course: CourseCreate):
+async def create_course(
+    course: CourseCreate,
+    db: AsyncSession = Depends(get_db)
+):
     return {
-        "message": "Course created successfully",
+        "message": "Async Course Created",
         "course": course
     }
 
@@ -31,10 +34,12 @@ async def get_course(course_id: int):
 async def get_courses(
     skip: int = 0,
     limit: int = 10,
-    department_id: Optional[int] = None
+    department_id: Optional[int] = None,
+    db: AsyncSession = Depends(get_db)
 ):
     return {
-        "skip": skip,
-        "limit": limit,
-        "department_id": department_id
-    }
+    "skip": skip,
+    "limit": limit,
+    "department_id": department_id,
+    "message": "Pagination works"
+}
