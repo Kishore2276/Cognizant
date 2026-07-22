@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HandsOn 3</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            margin:40px;
+            background:#f4f4f4;
+        }
+
+        h1{
+            margin-bottom:20px;
+        }
+
+        input{
+            padding:10px;
+            width:250px;
+            margin-right:10px;
+            margin-bottom:20px;
+            border:1px solid #ccc;
+            border-radius:5px;
+            font-size:16px;
+        }
+
+        button{
+            padding:10px 15px;
+            border:none;
+            background:#007bff;
+            color:white;
+            border-radius:5px;
+            cursor:pointer;
+            font-size:16px;
+        }
+
+        button:hover{
+            background:#0056b3;
+        }
+
+        #selected-course{
+            margin:20px 0;
+            font-size:18px;
+            font-weight:bold;
+            color:#007bff;
+        }
+
+        .course-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+            gap:20px;
+            margin-top:20px;
+        }
+
+        .course-card{
+            background:white;
+            padding:15px;
+            border-radius:8px;
+            box-shadow:0 0 8px rgba(0,0,0,0.2);
+            cursor:pointer;
+            transition:transform 0.2s;
+        }
+
+        .course-card:hover{
+            transform:scale(1.03);
+        }
+
+        h3{
+            margin-top:0;
+        }
+
+        #total-credits{
+            margin-top:25px;
+            font-size:20px;
+            font-weight:bold;
+        }
+
+        input{
+    padding:10px;
+    width:250px;
+    margin-right:10px;
+    margin-bottom:20px;
+}
+
+button{
+    padding:10px 15px;
+    cursor:pointer;
+}
+
+#selected-course{
+    margin:20px 0;
+    font-weight:bold;
+    color:blue;
+}
+
+    </style>
+
+</head>
+<body>
+
+    <h1>Student Courses</h1>
+
+    <!-- Step 40 -->
+    <input
+        type="text"
+        id="search-courses"
+        placeholder="Search courses..."
+    >
+
+    <!-- Step 42 -->
+    <button id="sort-btn">Sort by Credits</button>
+
+    <!-- Step 43 -->
+    <div id="selected-course">
+        Click on a course card to view its grade.
+    </div>
+
+    <!-- Step 35 -->
+    <div class="course-grid"></div>
+
+    <!-- Step 39 -->
+    <p id="total-credits"></p>
+
+    <script type="module" src="app.js"></script>
+
+</body>
+</html>
