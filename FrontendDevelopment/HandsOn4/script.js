@@ -151,3 +151,141 @@ Promise.all([
     });
 
 });
+
+// ==========================================
+// TASK 2
+// Reusable Fetch Function
+// ==========================================
+
+async function apiFetch(url){
+
+    const response = await fetch(url);
+
+    if(!response.ok){
+        throw new Error("Unable to load notifications.");
+    }
+
+    return await response.json();
+
+}
+
+
+
+// ==========================================
+// Load Notifications
+// ==========================================
+
+async function loadNotifications(){
+
+    const loading=document.getElementById("loadingPosts");
+    const container=document.getElementById("notifications");
+    const error=document.getElementById("errorMessage");
+
+    loading.innerText="Loading notifications...";
+    container.innerHTML="";
+    error.innerHTML="";
+
+    try{
+
+        const posts=await apiFetch("https://jsonplaceholder.typicode.com/posts");
+
+        loading.innerText="";
+
+        posts.slice(0,6).forEach(post=>{
+
+            container.innerHTML+=`
+            <div class="notification-card">
+                <h3>${post.title}</h3>
+                <p>${post.body}</p>
+            </div>
+            `;
+
+        });
+
+    }
+
+    catch(err){
+
+        loading.innerText="";
+
+        error.innerHTML=`
+        ${err.message}
+        <br><br>
+        <button onclick="loadNotifications()">Retry</button>
+        `;
+
+    }
+
+}
+
+loadNotifications();
+
+// ===================================================
+// TASK 3 - Introduction to Axios
+// ===================================================
+
+// Axios Request Interceptor
+axios.interceptors.request.use(function (config) {
+
+    console.log("API call started:", config.url);
+
+    return config;
+
+});
+
+// Reusable Axios Fetch Function
+async function apiFetchAxios(url) {
+
+    const response = await axios.get(url);
+
+    return response.data;
+
+}
+
+// Load Posts for User ID = 1
+async function loadUserPostsAxios() {
+
+    try {
+
+        const posts = await axios.get(
+            "https://jsonplaceholder.typicode.com/posts",
+            {
+                params: {
+                    userId: 1
+                }
+            }
+        );
+
+        console.log("Axios User 1 Posts:");
+
+        posts.data.forEach(post => {
+            console.log(post.title);
+        });
+
+    }
+    catch (error) {
+
+        console.log("Axios Error:", error.message);
+
+    }
+
+}
+
+loadUserPostsAxios();
+
+
+
+/*
+========================================================
+Fetch vs Axios
+
+1. Fetch requires response.json(); Axios automatically parses JSON.
+
+2. Fetch does not throw errors for HTTP 404/500.
+   Axios throws errors automatically for non-2xx responses.
+
+3. Fetch is built into browsers.
+   Axios is an external library with interceptors, timeout,
+   request cancellation and many additional features.
+========================================================
+*/
