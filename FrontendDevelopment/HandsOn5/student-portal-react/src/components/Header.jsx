@@ -9,6 +9,10 @@ function Header(props) {
         <a href="#">Profile</a>
       </nav>
 
+      <p>
+        <strong>Enrolled Courses:</strong> {props.enrolledCount}
+      </p>
+
       <hr />
     </header>
   );
