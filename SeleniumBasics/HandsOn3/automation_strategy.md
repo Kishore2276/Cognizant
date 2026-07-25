@@ -141,3 +141,178 @@ A Selenium test clicks the **Login** button before the page has fully loaded.
 # Conclusion
 
 This hands-on explains how to identify suitable candidates for automation, differentiate between manual and automated testing, calculate automation ROI, and understand flaky tests along with techniques to improve test reliability.
+
+
+---
+
+# Task 2 – Compare Automation Framework Types
+
+## 21. Comparison of Automation Framework Types
+
+### 1. Linear Framework
+
+**Description:**
+
+The Linear Framework is the simplest automation framework where test scripts are written and executed sequentially without reusable components. It is suitable for small projects with simple test cases.
+
+**Advantage:**
+
+- Easy to understand and implement.
+
+**Disadvantage:**
+
+- Difficult to maintain as the project grows.
+
+**Example:**
+
+Automating a single course creation workflow in the Course Management System.
+
+---
+
+### 2. Modular Framework
+
+**Description:**
+
+The Modular Framework divides the application into independent modules. Separate test scripts are created for each module and reused whenever needed.
+
+**Advantage:**
+
+- High code reusability.
+
+**Disadvantage:**
+
+- Initial framework setup requires more effort.
+
+**Example:**
+
+Separate modules for Login, Course Management, Student Management, and Logout.
+
+---
+
+### 3. Data-Driven Framework
+
+**Description:**
+
+The Data-Driven Framework stores test data outside the test scripts (Excel, CSV, JSON, etc.), allowing the same script to execute with multiple input values.
+
+**Advantage:**
+
+- Supports testing with multiple datasets without changing the code.
+
+**Disadvantage:**
+
+- Test data management can become complex.
+
+**Example:**
+
+Testing login functionality using 50 different username and password combinations.
+
+---
+
+### 4. Keyword-Driven Framework
+
+**Description:**
+
+The Keyword-Driven Framework executes tests based on predefined keywords such as Click, EnterText, Login, and Verify. Test cases are created using these keywords.
+
+**Advantage:**
+
+- Non-technical team members can design test cases.
+
+**Disadvantage:**
+
+- Framework implementation is more complex.
+
+**Example:**
+
+Creating login test cases using keywords like **OpenBrowser**, **EnterUsername**, **EnterPassword**, and **ClickLogin**.
+
+---
+
+### 5. Hybrid Framework
+
+**Description:**
+
+The Hybrid Framework combines the features of Modular, Data-Driven, and Keyword-Driven frameworks to provide maximum flexibility, maintainability, and scalability.
+
+**Advantage:**
+
+- Highly reusable, scalable, and suitable for large automation projects.
+
+**Disadvantage:**
+
+- Requires experienced team members to design and maintain.
+
+**Example:**
+
+A Course Management automation suite that uses reusable page objects, external test data, and keyword-based execution.
+
+---
+
+## 22. Recommended Framework for the Given Scenario
+
+### Recommended Framework
+
+**Hybrid Framework (Modular + Data-Driven + Keyword-Driven)**
+
+### Justification
+
+The Hybrid Framework is the best choice because:
+
+- It supports testing login with **50 different user credentials** using the Data-Driven approach.
+- Login functionality can be reused across **20 test cases** using the Modular approach.
+- Non-technical team members can create test cases using predefined keywords in the Keyword-Driven approach.
+- The framework is scalable, maintainable, and suitable for large Selenium automation projects.
+
+---
+
+## 23. Hybrid Framework Folder Structure
+
+```text
+CourseManagementAutomation
+│
+├── config
+│   └── config.properties
+│
+├── testdata
+│   ├── LoginData.xlsx
+│   └── CourseData.xlsx
+│
+├── pages
+│   ├── LoginPage.java
+│   ├── CoursePage.java
+│   └── DashboardPage.java
+│
+├── tests
+│   ├── LoginTest.java
+│   ├── CourseTest.java
+│   └── SmokeTest.java
+│
+├── utilities
+│   ├── ExcelUtils.java
+│   ├── DriverFactory.java
+│   ├── WaitUtils.java
+│   └── ScreenshotUtils.java
+│
+├── reports
+│
+└── pom.xml
+```
+
+### Folder Description
+
+| Folder | Purpose |
+|---------|----------|
+| config | Stores application configuration files. |
+| testdata | Stores Excel, CSV, or JSON files used for Data-Driven testing. |
+| pages | Contains Page Object Model (POM) classes for each application page. |
+| tests | Contains Selenium test scripts. |
+| utilities | Stores reusable helper classes such as WebDriver setup, waits, screenshots, and Excel handling. |
+| reports | Stores generated automation execution reports. |
+| pom.xml | Manages Maven dependencies and project configuration. |
+
+---
+
+# Conclusion
+
+This hands-on compares the five major automation framework types, recommends the most suitable framework for a real-world Selenium project, and presents a well-organized Hybrid Framework folder structure. The Hybrid Framework is the preferred choice for enterprise automation because it combines reusability, flexibility, maintainability, and support for data-driven testing.
