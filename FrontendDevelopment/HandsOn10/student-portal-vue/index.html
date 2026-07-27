@@ -1,0 +1,61 @@
+<!--
+Task 3 - Colour Contrast & Cross-Browser Testing
+
+Colour Contrast Check
+Before:
+Text Color: #000000
+Background Color: #FFFFFF
+
+Contrast Ratio:
+21:1 (PASS)
+
+After:
+No changes required. The colour combination already satisfies WCAG AA (minimum 4.5:1).
+
+Cross-Browser Testing:
+Browsers Tested:
+- Google Chrome
+- Microsoft Edge
+
+Result:
+Layout, navigation and functionality are consistent across both browsers.
+
+Browser Support:
+Feature Checked: CSS Grid
+Source: https://caniuse.com
+Result: Supported by modern browsers (Chrome, Edge, Firefox and Safari).
+
+Polyfill:
+css-vars-ponyfill added for CSS variable compatibility.
+-->
+
+
+<!--
+Accessibility Audit (Lighthouse)
+
+Initial Accessibility Score: 90
+
+Issues Found:
+1. Elements use prohibited ARIA attributes.
+2. Document does not have a main landmark.
+
+-->
+
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
+<script>
+  cssVars();
+</script>
+  </body>
+</html>
